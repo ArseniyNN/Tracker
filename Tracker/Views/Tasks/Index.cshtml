@@ -1,0 +1,29 @@
+﻿@using Tracker.Models
+@model List<TaskItem>
+@{
+    ViewData["Title"] = "Список задач";
+}
+<h1>Список задач</h1>
+
+<table class= "table"> 
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>Статус</th>
+            <th>Дата создания</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.IsDone</td>
+                <td>@task.CreatedAt</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-secondary">Добавить задачу</a>
+</div>

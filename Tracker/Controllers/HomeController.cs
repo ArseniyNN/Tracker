@@ -13,8 +13,6 @@ namespace Tracker.Controllers
 
         public IActionResult Privacy()
         {
-            int a = 0;
-            int b = 10 / a;
             return View();
         }
 

@@ -1,0 +1,26 @@
+﻿@using Tracker.Models;
+@model TaskItem;
+@{
+    ViewData["Title"] = "Добавление задачи";
+}
+
+<form method ="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a asp-action="Index" class="btn btn-secondary">Назад</a>
+    </div>
+</form>
+@section Scripts{
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
