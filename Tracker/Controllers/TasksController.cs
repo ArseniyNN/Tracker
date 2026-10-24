@@ -34,8 +34,18 @@ namespace Tracker.Controllers
                 return RedirectToAction("Index");
             }
             return View(task);
-
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
