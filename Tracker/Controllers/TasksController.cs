@@ -47,5 +47,31 @@ namespace Tracker.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+            return View(task);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(TaskItem task)
+        {
+            if (ModelState.IsValid)
+            {
+                var newtask = await _context.Tasks.FindAsync(task.Id);
+                if(newtask != null)
+                {
+                    newtask.Title = task.Title;
+                    newtask.Description = task.Description;
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            return View(task);
+        }
     }
 }
