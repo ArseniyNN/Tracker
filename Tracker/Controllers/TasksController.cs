@@ -73,5 +73,19 @@ namespace Tracker.Controllers
             }
             return View(task);
         }
+        public async Task<IActionResult> Toggle(int Id)
+        {
+            var newtask = await _context.Tasks.FindAsync(Id);
+            if(newtask != null)
+            {
+                newtask.IsDone = !newtask.IsDone;
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

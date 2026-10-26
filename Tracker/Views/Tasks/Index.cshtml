@@ -29,6 +29,9 @@
                         <div>
                             <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-warning btn-sm">Изменить</a>
                         </div>
+                        <form method="post" asp-action="Toggle"asp-route-id="@task.Id">
+                            <button type="submit" class="btn btn-success btn-sm">Статус</button>
+                        </form>
                         </div>
                     </td>
             </tr>
