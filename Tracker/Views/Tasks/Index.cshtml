@@ -19,7 +19,7 @@
         {
             <tr>
                     <td>@task.Title</td>
-                    <td>@task.IsDone</td>
+                    <td>@(task.IsDone ? "Выполнено" : "Не выполнено")</td>
                     <td>@task.CreatedAt</td>
                     <td>
                         <div class="d-flex gap-2">
@@ -32,6 +32,9 @@
                         <form method="post" asp-action="Toggle"asp-route-id="@task.Id">
                             <button type="submit" class="btn btn-success btn-sm">Статус</button>
                         </form>
+                        <div>
+                            <a asp-action = "Details" asp-route-id="@task.Id" class="btn btn-info btn-sm">Подробности</a>
+                        </div>
                         </div>
                     </td>
             </tr>

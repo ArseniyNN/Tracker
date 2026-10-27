@@ -1,0 +1,10 @@
+﻿@using Tracker.Models;
+@model TaskItem;
+@{
+    ViewData["Title"] = "Сведения";
+}
+<h2>Название задачи: @Model.Title</h2>
+<h5>Статус задачи: @(Model.IsDone ? "Выполнена" : "Не выполнена")</h5>
+<h5>Дата создания задачи: @Model.CreatedAt</h5>
+<p>Описание задачи: @Model.Description</p>
+<a asp-action="Index" class="btn btn-primary">Назад на страницу</a>

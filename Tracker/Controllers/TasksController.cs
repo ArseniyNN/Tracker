@@ -73,6 +73,7 @@ namespace Tracker.Controllers
             }
             return View(task);
         }
+        [HttpPost]
         public async Task<IActionResult> Toggle(int Id)
         {
             var newtask = await _context.Tasks.FindAsync(Id);
@@ -81,6 +82,19 @@ namespace Tracker.Controllers
                 newtask.IsDone = !newtask.IsDone;
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+            if(task != null)
+            {
+                return View(task);
             }
             else
             {
