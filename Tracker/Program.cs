@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using Tracker.Constans;
 using Tracker.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString(ConnectionNames.Default)));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

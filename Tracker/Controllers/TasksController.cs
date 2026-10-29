@@ -31,7 +31,7 @@ namespace Tracker.Controllers
             {
                 await _context.Tasks.AddAsync(task);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             return View(task);
         }
@@ -45,7 +45,7 @@ namespace Tracker.Controllers
                 _context.Tasks.Remove(task);
             }
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -64,7 +64,7 @@ namespace Tracker.Controllers
                     newtask.Title = task.Title;
                     newtask.Description = task.Description;
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    return RedirectToAction(nameof(Index));
                 }
                 else
                 {
@@ -81,7 +81,7 @@ namespace Tracker.Controllers
             {
                 newtask.IsDone = !newtask.IsDone;
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
             else
             {
